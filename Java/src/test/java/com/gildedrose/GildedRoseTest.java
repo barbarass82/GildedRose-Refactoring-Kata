@@ -77,6 +77,7 @@ public class GildedRoseTest {
     @Test
     public void testUpdateQuality_sulfurasQualityIs80AndNeverAlters() {
 
+        //TODO Must I create a Sulfuras with quality 80 or can I create with another quality?
         Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 10, 80) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
