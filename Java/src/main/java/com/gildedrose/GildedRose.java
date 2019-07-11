@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import java.util.Arrays;
+
 class GildedRose {
     Item[] items;
 
@@ -8,30 +10,26 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (Item item : items) {
-            
+        
+        (Arrays.asList(items)).forEach(item -> {
+
             switch (item.name) {
-                case "Aged Brie":
-                    updateChesseQuality(item);
-                    break;
-            
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    updateBackstageQuality(item);
-                    break;
 
-                case "Sulfuras, Hand of Ragnaros":
-                    updateSulfurasQuality(item);
-                    break;
+                case "Aged Brie": updateChesseQuality(item); break;
 
-                default:
-                    updateItemQuality(item);
-                    break;
+                case "Backstage passes to a TAFKAL80ETC concert": updateBackstageQuality(item); break;
+
+                case "Sulfuras, Hand of Ragnaros": updateSulfurasQuality(item); break;
+
+                default: updateRegularItemQuality(item);
+
             }
 
-        }
+        });
+        
     }
 
-    private void updateItemQuality(Item item) {
+    public static void updateRegularItemQuality(Item item) {
         if (item.quality > 0) {
             item.quality = item.quality - 1;
         }
