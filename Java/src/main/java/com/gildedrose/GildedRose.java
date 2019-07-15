@@ -3,6 +3,11 @@ package com.gildedrose;
 import java.util.Arrays;
 
 class GildedRose {
+
+    public static final String AGED_CHEESE = "Aged Brie";
+    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -15,11 +20,11 @@ class GildedRose {
 
             switch (item.name) {
 
-                case "Aged Brie": updateChesseQuality(item); break;
+                case AGED_CHEESE: updateChesseQuality(item); break;
 
-                case "Backstage passes to a TAFKAL80ETC concert": updateBackstageQuality(item); break;
+                case BACKSTAGE_PASSES: updateBackstageQuality(item); break;
 
-                case "Sulfuras, Hand of Ragnaros": updateSulfurasQuality(item); break;
+                case SULFURAS: updateSulfurasQuality(item); break;
 
                 default: updateRegularItemQuality(item);
 
@@ -36,10 +41,8 @@ class GildedRose {
 
         item.sellIn = item.sellIn - 1;
 
-        if (item.sellIn < 0) {
-            if (item.quality > 0) {
-                    item.quality = item.quality - 1;
-            }
+        if (item.sellIn < 0 && item.quality > 0) {
+            item.quality = item.quality - 1;
         }
     }
 
@@ -52,7 +55,7 @@ class GildedRose {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
 
-            if (item.name.equals("Backstage passes to a TAFKAL80ETC concert") && item.quality < 50) {
+            if (item.quality < 50) {
                 if (item.sellIn < 11) {
                     item.quality = item.quality + 1;
                 }
@@ -78,10 +81,8 @@ class GildedRose {
 
         item.sellIn = item.sellIn - 1;
         
-        if (item.sellIn < 0) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-            }
+        if (item.sellIn < 0 && item.quality < 50) {
+            item.quality = item.quality + 1;
         }
     }
 
