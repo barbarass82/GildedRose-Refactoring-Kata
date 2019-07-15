@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 class GildedRose {
 
-    public static final String AGED_CHEESE = "Aged Brie";
+    public static final String AGED_ITEM = "Aged Brie";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
@@ -20,7 +20,7 @@ class GildedRose {
 
             switch (item.name) {
 
-                case AGED_CHEESE: updateChesseQuality(item); break;
+                case AGED_ITEM: updateAgedItemQuality(item); break;
 
                 case BACKSTAGE_PASSES: updateBackstageQuality(item); break;
 
@@ -73,7 +73,7 @@ class GildedRose {
         }
     }
 
-    private void updateChesseQuality(Item item) {
+    private void updateAgedItemQuality(Item item) {
 
         if (item.quality < 50) {
             item.quality = item.quality + 1;
